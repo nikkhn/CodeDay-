@@ -7,22 +7,71 @@ window.onload = function() {
 	xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 	    var myArr = JSON.parse(xmlhttp.responseText);
-	    myFunction(myArr);
+	    readAddress(myArr);
+	    codeAddress();
 	    }
 	}
 
 	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 
-	function myFunction(myArr) {
-		for (i = 0; i < 9; i++) {
-			//alert(myArr[i].toString());
-			if (myArr[i].meal_served === ("Breakfast")) {
-				console.log(myArr[i].meal_served);
-				alert(myArr[i].toString());
-			}
+	var addresses = [];
+
+	function readAddress(myArr) {
+		for (j = 0; j < myArr.length; j++) {
+			addresses[j] = myArr[j].location;
 		}
+
+		//debug console code
+		for (k = 0; k < addresses.length; k++) {
+			console.log(addresses[k]);
+
+		}
+
 	}
+
+
+	var geocoder;
+    function codeAddress() {
+
+    geocoder = new google.maps.Geocoder();
+    var lat = [];
+
+    for (g = 0; g < addresses.length; g++) {
+    	var address = addresses[g];
+      	getCoordinates(address, function(coords) {
+      		console.log(coords);
+      		lat[g] = coords[0];
+
+      	})
+    }
+    console.log("got out of for loop");
+
+    for (h = 0; h < lat.length; h++) {
+    	console.log("lat for loop");
+    	console.log(lat[h]);
+
+    }
+
+
+    function getCoordinates (address, callback) {
+    	var coordinates;
+    	geocoder.geocode({ address: address}, function (results, status) {
+
+    		if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+    			console.log("address: " + address + "produced zero results");
+    		}
+
+    		console.log("Status is " + status);
+
+    		if (status == google.maps.GeocoderStatus.OK) {
+	    		coordinates = results[0].geometry.location;
+	    		callback(coordinates);
+	    	} 
+    	})
+    }
+
 };
+  }
 
 
