@@ -1,13 +1,28 @@
-window.onload=function(){
+window.onload = function() {
+	alert("whatup");
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://data.seattle.gov/resource/hmzu-x5ed.json";
+	//alert(url);
 
-	var meals = "self.location='https://data.seattle.gov/resource/hmzu-x5ed.json?Meal_Served=Breakfast"
-
-	var obj = JSON.parse(meals);
-
-	function myFunction(obj)
-		{
-	    for (var i = 0; i < obj.length; i++){
-	    	alert(obj[i]);
+	xmlhttp.onreadystatechange = function() {
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    var myArr = JSON.parse(xmlhttp.responseText);
+	    myFunction(myArr);
 	    }
 	}
+
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+
+	function myFunction(myArr) {
+		for (i = 0; i < 9; i++) {
+			//alert(myArr[i].toString());
+			if (myArr[i].meal_served === ("Breakfast")) {
+				console.log(myArr[i].meal_served);
+				alert(myArr[i].toString());
+			}
+		}
+	}
 };
+
+
