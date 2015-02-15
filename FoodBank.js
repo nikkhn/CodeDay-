@@ -15,14 +15,13 @@ window.onload = function() {
 	xmlhttp.send();
 
 	function myFunction(myArr) {
-		for (i = 0; i < 9; i++) {
-			//alert(myArr[i].toString());
+		for (i = 0; i < myArr.length; i++) {
 			if (myArr[i].meal_served === ("Breakfast")) {
-				console.log(myArr[i].meal_served);
-				alert(myArr[i].toString());
+			console.log(myArr[i].name_of_program);
 			}
 		}
 	}
 };
+
 
 
