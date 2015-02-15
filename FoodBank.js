@@ -47,92 +47,137 @@ window.onload = function() {
     
     function codeAddress() {
     geocoder = new google.maps.Geocoder();
-    var lat = [];
 
-    //var test1;
-    //test1 = https://data.seattle.gov/resource/hmzu-x5ed.json?$select=location,$where=day_time=Monday - Friday: 6:15 - 7:00 A.M.
-    //console.log(test);
+    //for (g = 0; g < addresses.length; g++) {
+    	var address = addresses[0];
+    	var programName = name[0];
+    	var peopleServed = people[0];
+    	var mealServed = meal[0];
+    	var day = dayTime[0];   
 
-    Map
+    	var open = false;
+    	var windowOpen = null;
 
-    for (g = 0; g < addresses.length; g++) {
-    	var address = addresses[g];
-    	var programName = name[g];
-    	var peopleServed = people[g];
-    	var mealServed = meal[g];
-    	var day = dayTime[g];    
 
-      	getCoordinates(address, function(coords) {
+    	//millionaire club
+      	getCoordinates(addresses[0], function(coords) {
       		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
-    		//creating marker
-   //  		var marker = new google.maps.Marker({
-		 //    	position: myLatlng,
-		 //      	title:"Hello World!"
-		 //      	});
-		 //      // To add the marker to the map, call setMap();
-		 //      	marker.setMap(map);
 
-		 //    marker.info = new google.maps.InfoWindow({
-  	// 			content: contentString
-			// });
-
-			//copied from stackOverflow
 			var marker = new google.maps.Marker({map: map, position: myLatlng});
 			marker.setMap(map)
-
-			// marker.info = new google.maps.InfoWindow({
-			//   content: contentString
-			// });
-
-			// google.maps.event.addListener(marker, 'click', function() {
-			//   marker.info.open(map, marker);
-			// });
-			//end copy
-
-
-			// //Info window information 
-			// var contentString 
 
 			marker.info = new google.maps.InfoWindow({
 			  content: '<div id="content">'+
 			    '<div id="siteNotice">'+
 			    '</div>'+
-			    '<h1 id="firstHeading" class="firstHeading">' + name[g] + '</h1>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[0] + '</h1>'+
 			    '<div id="bodyContent">'+
-			    '<p><b>' + name[g] + '</b> is <b>' + people[g]+ '</b> ' +
-			    'for <b>' + meal[g] + ' </b> on ' + dayTime[g] +
+			    '<p><b>' + name[0] + '</b> is <b>' + people[0]+ '</b> ' +
+			    'for <b>' + meal[0] + ' </b> on ' + dayTime[0] +
 			    '</div>'+
 			    '</div>'
 			});
 
-			// //create info windows
-			// var infowindow = new google.maps.InfoWindow({
-			//     content: contentString
-			// });
-			//setting info windows on marker 
-			// var marker = new google.maps.Marker({
-			//     position: myLatlng,
-			//     map: map,
-			//     title: programName
-			//   });
-			
-			// google.maps.event.addListener(marker, 'click', function() {
-			//     infowindow.open(map,marker);
-			// });	
+			google.maps.event.addListener(marker, 'click', function() {
+			  	marker.info.open(map, marker);
+
+			});	     
+		})
+    //}
+
+    //South park charity
+    getCoordinates(addresses[1], function(coords) {
+      		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
+
+			var marker = new google.maps.Marker({map: map, position: myLatlng});
+			marker.setMap(map)
+
+			marker.info = new google.maps.InfoWindow({
+			  content: '<div id="content">'+
+			    '<div id="siteNotice">'+
+			    '</div>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[1] + '</h1>'+
+			    '<div id="bodyContent">'+
+			    '<p><b>' + name[1] + '</b> is <b>' + people[1]+ '</b> ' +
+			    'for <b>' + meal[1] + ' </b> on ' + dayTime[1] +
+			    '</div>'+
+			    '</div>'
+			});
 
 			google.maps.event.addListener(marker, 'click', function() {
-
 			  marker.info.open(map, marker);
 			});	     
 		})
-    }
-    console.log("got out of for loop");
 
-    for (h = 0; h < lat.length; h++) {
-    	console.log("lat for loop");
-    	console.log(lat[h]);
+    //
+    getCoordinates(addresses[2], function(coords) {
+      		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
 
-    }
+			var marker = new google.maps.Marker({map: map, position: myLatlng});
+			marker.setMap(map)
+
+			marker.info = new google.maps.InfoWindow({
+			  content: '<div id="content">'+
+			    '<div id="siteNotice">'+
+			    '</div>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[2] + '</h1>'+
+			    '<div id="bodyContent">'+
+			    '<p><b>' + name[2] + '</b> is <b>' + people[2]+ '</b> ' +
+			    'for <b>' + meal[2] + ' </b> on ' + dayTime[2] +
+			    '</div>'+
+			    '</div>'
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+			  marker.info.open(map, marker);
+			});	     
+		})
+
+    getCoordinates(addresses[3], function(coords) {
+      		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
+
+			var marker = new google.maps.Marker({map: map, position: myLatlng});
+			marker.setMap(map)
+
+			marker.info = new google.maps.InfoWindow({
+			  content: '<div id="content">'+
+			    '<div id="siteNotice">'+
+			    '</div>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[3] + '</h1>'+
+			    '<div id="bodyContent">'+
+			    '<p><b>' + name[3] + '</b> is <b>' + people[3]+ '</b> ' +
+			    'for <b>' + meal[3] + ' </b> on ' + dayTime[3] +
+			    '</div>'+
+			    '</div>'
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+			  marker.info.open(map, marker);
+			});	     
+		})
+
+    getCoordinates(addresses[4], function(coords) {
+      		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
+
+			var marker = new google.maps.Marker({map: map, position: myLatlng});
+			marker.setMap(map)
+
+			marker.info = new google.maps.InfoWindow({
+			  content: '<div id="content">'+
+			    '<div id="siteNotice">'+
+			    '</div>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[1] + '</h1>'+
+			    '<div id="bodyContent">'+
+			    '<p><b>' + name[4] + '</b> is <b>' + people[4]+ '</b> ' +
+			    'for <b>' + meal[4] + ' </b> on ' + dayTime[4] +
+			    '</div>'+
+			    '</div>'
+			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+			  marker.info.open(map, marker);
+			});	     
+		})
 };
 
 
