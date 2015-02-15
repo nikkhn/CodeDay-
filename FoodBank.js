@@ -79,6 +79,11 @@ window.onload = function() {
 			});
 
 			google.maps.event.addListener(marker, 'click', function() {
+				if (open) {
+					windowOpen.close();
+				}
+				open = true;
+				windowOpen = marker.info;
 			  	marker.info.open(map, marker);
 
 			});	     
@@ -105,6 +110,11 @@ window.onload = function() {
 			});
 
 			google.maps.event.addListener(marker, 'click', function() {
+				if (open) {
+					windowOpen.close();
+				}
+				open = true;
+				windowOpen = marker.info;
 			  marker.info.open(map, marker);
 			});	     
 		})
@@ -129,6 +139,11 @@ window.onload = function() {
 			});
 
 			google.maps.event.addListener(marker, 'click', function() {
+				if (open) {
+					windowOpen.close();
+				}
+				open = true;
+				windowOpen = marker.info;
 			  marker.info.open(map, marker);
 			});	     
 		})
@@ -152,6 +167,11 @@ window.onload = function() {
 			});
 
 			google.maps.event.addListener(marker, 'click', function() {
+				if (open) {
+					windowOpen.close();
+				}
+				open = true;
+				windowOpen = marker.info;
 			  marker.info.open(map, marker);
 			});	     
 		})
@@ -175,6 +195,11 @@ window.onload = function() {
 			});
 
 			google.maps.event.addListener(marker, 'click', function() {
+				if (open) {
+					windowOpen.close();
+				}
+				open = true;
+				windowOpen = marker.info;
 			  marker.info.open(map, marker);
 			});	     
 		})
