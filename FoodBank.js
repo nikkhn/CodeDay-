@@ -36,60 +36,94 @@ window.onload = function() {
 		for (j = 0; j < myArr.length; j++) {
 			addresses[j] = myArr[j].location;
 			name[j] = myArr[j].name_of_program;
-			meal = myArr[j].meal_served;
-			people = myArr[j].people_served;
-			dayTime = myArr[j].day_time;
-		}
-
-		//debug console code
-		for (k = 0; k < addresses.length; k++) {
-			console.log(addresses[k]);
-
+			meal[j] = myArr[j].meal_served;
+			people[j] = myArr[j].people_served;
+			dayTime[j] = myArr[j].day_time;
 		}
 
 	}
 
 	var geocoder;
+    
     function codeAddress() {
-
     geocoder = new google.maps.Geocoder();
     var lat = [];
 
+    //var test1;
+    //test1 = https://data.seattle.gov/resource/hmzu-x5ed.json?$select=location,$where=day_time=Monday - Friday: 6:15 - 7:00 A.M.
+    //console.log(test);
+
+    Map
+
     for (g = 0; g < addresses.length; g++) {
     	var address = addresses[g];
+    	var programName = name[g];
+    	var peopleServed = people[g];
+    	var mealServed = meal[g];
+    	var day = dayTime[g];    
+
       	getCoordinates(address, function(coords) {
       		var myLatlng = new google.maps.LatLng(coords.k, coords.D);
     		//creating marker
-    		var marker = new google.maps.Marker({
-		    	position: myLatlng,
-		      	title:"Hello World!"
-		      	});
-		      // To add the marker to the map, call setMap();
-		      	marker.setMap(map);
+   //  		var marker = new google.maps.Marker({
+		 //    	position: myLatlng,
+		 //      	title:"Hello World!"
+		 //      	});
+		 //      // To add the marker to the map, call setMap();
+		 //      	marker.setMap(map);
 
-			var contentString = '<div id="content">'+
+		 //    marker.info = new google.maps.InfoWindow({
+  	// 			content: contentString
+			// });
+
+			//copied from stackOverflow
+			var marker = new google.maps.Marker({map: map, position: myLatlng});
+			marker.setMap(map)
+
+			// marker.info = new google.maps.InfoWindow({
+			//   content: contentString
+			// });
+
+			// google.maps.event.addListener(marker, 'click', function() {
+			//   marker.info.open(map, marker);
+			// });
+			//end copy
+
+
+			// //Info window information 
+			// var contentString 
+
+			marker.info = new google.maps.InfoWindow({
+			  content: '<div id="content">'+
 			    '<div id="siteNotice">'+
 			    '</div>'+
-			    '<h1 id="firstHeading" class="firstHeading">name[g]</h1>'+
+			    '<h1 id="firstHeading" class="firstHeading">' + name[g] + '</h1>'+
 			    '<div id="bodyContent">'+
-			    '<p><b>Millionair Club Charity</b> is <b>open to all</b> ' +
-			    'for <b>breakfast</b> Mondays thru Friday from 6:15 am to 7:00 am.'
+			    '<p><b>' + name[g] + '</b> is <b>' + people[g]+ '</b> ' +
+			    'for <b>' + meal[g] + ' </b> on ' + dayTime[g] +
 			    '</div>'+
-			    '</div>';
-			//create info windows
-			var infowindow = new google.maps.InfoWindow({
-			    content: contentString
+			    '</div>'
 			});
-			//setting info windows on markers
-			var marker = new google.maps.Marker({
-			    position: myLatlng,
-			    map: map,
-			    title: 'Millionair Club Charity'
-			  });
+
+			// //create info windows
+			// var infowindow = new google.maps.InfoWindow({
+			//     content: contentString
+			// });
+			//setting info windows on marker 
+			// var marker = new google.maps.Marker({
+			//     position: myLatlng,
+			//     map: map,
+			//     title: programName
+			//   });
 			
+			// google.maps.event.addListener(marker, 'click', function() {
+			//     infowindow.open(map,marker);
+			// });	
+
 			google.maps.event.addListener(marker, 'click', function() {
-			    infowindow.open(map,marker);
-			});		     
+
+			  marker.info.open(map, marker);
+			});	     
 		})
     }
     console.log("got out of for loop");
