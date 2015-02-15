@@ -1,31 +1,20 @@
-window.onload=function(){
 function initialize() {
-  var myLatlng = new google.maps.LatLng(47.612412,-122.336565);
+  // LatLng needs to be generalized
+  var myLatlng = new google.maps.LatLng(47.612412,-122.336565); 
   var mapOptions = {
     zoom: 13,
     center: myLatlng
   };
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
+// text within the info window
   var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+      '<h1 id="firstHeading" class="firstHeading">Millionair Club Charity</h1>'+
       '<div id="bodyContent">'+
-      '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-      'sandstone rock formation in the southern part of the '+
-      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-      'south west of the nearest large town, Alice Springs; 450&#160;km '+
-      '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-      'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-      'Aboriginal people of the area. It has many springs, waterholes, '+
-      'rock caves and ancient paintings. Uluru is listed as a World '+
-      'Heritage Site.</p>'+
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-      '(last visited June 22, 2009).</p>'+
+      '<p><b>Millionair Club Charity</b> is <b>open to all</b> ' +
+      'for <b>breakfast</b> Mondays thru Friday from 6:15 am to 7:00 am.'
       '</div>'+
       '</div>';
 
@@ -36,7 +25,7 @@ function initialize() {
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      title: 'Uluru (Ayers Rock)'
+      title: 'Millionair Club Charity'
   });
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map,marker);
@@ -44,4 +33,3 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-}
