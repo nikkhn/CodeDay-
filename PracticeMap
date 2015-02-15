@@ -14,9 +14,8 @@
     <!-- Insert info window -->
     <script type="text/javascript" src="insertinfowindow.js"> </script>
 
-<input type="text" id="add" style=" width:200px" title="Address to Geocode" />
-<input type="button" onclick="codeAddress()" id="inputButtonGeocode" style="width:150px" title="Click to Geocode" value="Click to Geocode" />
-
+<!--<input type="text" id="add" style=" width:200px" title="Address to Geocode" />
+<input type="button" onclick="codeAddress()" id="inputButtonGeocode" style="width:150px" title="Click to Geocode" value="Click to Geocode" />-->
 
     <script type="text/javascript" src="GeocodeAddress.js"> </script>     
   </head>
