@@ -3,9 +3,9 @@
     var geocoder;
     var map;
     geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(47.609901, -122.333674);
+    var latlng = new google.maps.LatLng(47.663999, -122.309785);
     var mapOptions = {
-      zoom: 8,
+      zoom: 13,
       center: latlng
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
@@ -14,7 +14,7 @@
   function codeAddress() {
     var add = document.getElementById("add").value;
     console.log(add);
-    geocoder.geocode( { 'address': add}, function(results, status) {
+    geocoder.geocode( {'address': add}, function(results, status) {
       console.log("got this far");
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
@@ -28,10 +28,10 @@
     })
   };
 
-/*<body onload="initialize()">
+<body onload="initialize()">
  <div id="map-canvas" style="width: 320px; height: 480px;"></div>
   <div>
     <input id="address" type="textbox" value="Sydney, NSW">
     <input type="button" value="Encode" onclick="codeAddress()">
   </div>
-</body>*/
+</body>
