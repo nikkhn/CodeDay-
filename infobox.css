@@ -1,0 +1,23 @@
+header {
+  width: 100%;
+  background: #ccc;
+   opacity: .4;
+}
+.h2 {
+ color: black;
+}
+.wrap {
+  width: 80%;
+  max-width: 24em;
+  margin: 0 auto;
+  padding: 0.25em 0.625em;
+}
+
+  #legend {
+    background: black;
+    padding: 10px;
+  }
+
+  #legendText {
+  	color: green;
+  }
